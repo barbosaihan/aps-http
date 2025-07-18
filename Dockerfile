@@ -16,11 +16,14 @@ RUN pip install mcp-proxy
 # 5. Copiar o código do servidor para dentro da imagem
 COPY ./aps-mcp-server /app/aps-mcp-server
 
-# (Opcional, mas recomendado) Instalar as dependências do servidor Node.js
+# 6. Instalar as dependências do servidor Node.js
 RUN cd /app/aps-mcp-server && npm install
 
-# 6. Expor a porta que o proxy vai usar
+# 7. NOVO PASSO: Compilar o código do servidor
+RUN cd /app/aps-mcp-server && npm run build
+
+# 8. Expor a porta que o proxy vai usar
 EXPOSE 8080
 
-# 7. Comando para iniciar o proxy
+# 9. Comando para iniciar o proxy
 CMD ["mcp-proxy", "node", "/app/aps-mcp-server/build/server.js"]
