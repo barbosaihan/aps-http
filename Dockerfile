@@ -29,7 +29,7 @@ RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app
     echo "APS_SA_ID=2SN2J9GFLBSS6RN3" >> /app/aps-mcp-server/.env && \
     echo "APS_SA_EMAIL=ssa-ihanbb@fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo.adskserviceaccount.com" >> /app/aps-mcp-server/.env && \
     echo "APS_SA_KEY_ID=4f7741c0-dcf5-443f-a074-eb272068aa4a" >> /app/aps-mcp-server/.env && \
-    echo "APS_SA_PRIVATE_KEY=-----BEGIN RSA PRIVATE KEY-----
+    echo 'APS_SA_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEAnHW0W8/NbuSwogIZA2qWjhhYsdhGTkKSsfVT9HxyZW7Sswn4
 OVmTuJ15HHZldryQ4F8WLEKGzqJoxrKvkZSOElJ8gbTUU64Vgli6EjsA/y0nsU6z
 l1PTIkONBpE17OY+EAiqcW680h3VY2eIUBscuqCVI7lN5NZUclytYyp6RFRZ65Ph
@@ -56,7 +56,7 @@ v6oXAQKBgQDYjcrP3Z2iRuMXglH3mpxt5KTce8kIBX1NqAITb2djjtG/llc4obsw
 f/uWQOPHZcSxLzMRR+ZmgaOD1oEmovy7jlceIQeBECkmdv1hBpsJnNrsPb35CrV8
 w2XmQXvLh6fqM3/vl150B/bS6w9A3EYc+p4wCu3+svzRpJpbuW633w==
 -----END RSA PRIVATE KEY-----
-" >> /app/aps-mcp-server/.env
+"' >> /app/aps-mcp-server/.env
 
 # 9. Expor a porta que o proxy vai usar
 EXPOSE 8080
