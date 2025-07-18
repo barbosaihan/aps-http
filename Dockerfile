@@ -25,13 +25,18 @@ RUN cd /app/aps-mcp-server && npm install
 # 8. Compilar o código do servidor
 RUN cd /app/aps-mcp-server && npm run build
 
-# 9. Expor a porta que o proxy vai usar
+# 9. ---- NOVO: CRIAR O ARQUIVO .ENV MANUALMENTE ----
+# Substitua os valores 'SEU_..._AQUI' pelas suas credenciais reais.
+RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app/.env && \
+    echo "APS_CLIENT_SECRET=HdKJ5S9X22rtMrdmsPYOnYQwY6WJiq2a2HsQCbHsmFAfiU1X8w9C6mHGEO0egfS9" >> /app/.env && \
+    echo "APS_BUCKET=mcp-projeto-claude-2025" >> /app/.env && \
+    echo "APS_SA_ID=2SN2J9GFLBSS6RN3" >> /app/.env && \
+    echo "APS_SA_EMAIL=ssa-ihanbb@fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo.adskserviceaccount.com" >> /app/.env && \
+    echo "APS_SA_KEY_ID=4f7741c0-dcf5-443f-a074-eb272068aa4a" >> /app/.env && \
+    echo "APS_SA_PRIVATE_KEY=/app/private_key.pem" >> /app/.env
+
+# 10. Expor a porta que o proxy vai usar
 EXPOSE 8080
 
-# 10. Comando para iniciar o proxy (Temporariamente desativado)
-# CMD ["mcp-proxy", "node", "/app/aps-mcp-server/build/server.js"]
-
-# --- NOVO COMANDO PARA DEBUG ---
-# Este comando vai listar os arquivos, imprimir as variáveis de ambiente,
-# mostrar o conteúdo do .env e manter o contêiner rodando por 1 hora.
-CMD ["sh", "-c", "echo '--- LISTANDO ARQUIVOS em /app ---'; ls -la /app; echo '\n--- VARIAVEIS DE AMBIENTE (printenv) ---'; printenv; echo '\n--- CONTEUDO DO ARQUIVO .env ---'; cat /app/.env || echo 'Arquivo .env nao foi encontrado.'; echo '\n--- FIM DO DEBUG, AGUARDANDO ---'; sleep 3600"]
+# 11. Comando final para iniciar a aplicação
+CMD ["mcp-proxy", "node", "/app/aps-mcp-server/build/server.js"]
