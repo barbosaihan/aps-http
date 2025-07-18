@@ -1,5 +1,5 @@
-# 1. Usar a imagem base do Python
-FROM python:3.10-slim-buster
+# 1. Usar uma imagem base MODERNA do Python (Debian 12)
+FROM python:3.10-slim-bookworm
 
 # 2. Instalar o Node.js e o npm
 RUN apt-get update && \
@@ -23,5 +23,4 @@ RUN cd /app/aps-mcp-server && npm install
 EXPOSE 8080
 
 # 7. Comando para iniciar o proxy
-# O proxy, por sua vez, vai iniciar o 'node'
 CMD ["mcp-proxy", "node", "/app/aps-mcp-server/build/server.js"]
