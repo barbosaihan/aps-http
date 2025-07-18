@@ -23,7 +23,7 @@ RUN cd /app/aps-mcp-server && npm install
 RUN cd /app/aps-mcp-server && npm run build
 
 # 8. Copiar a chave privada PKCS#8 para o contêiner
-COPY private_key_pkcs8_formatted.pem /app/private_key.pem
+COPY private_key.pem /app/aps-mcp-server/private_key.pem
 
 # 9. Criar o arquivo .env com as credenciais e o caminho da chave PKCS#8
 RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app/aps-mcp-server/.env && \
@@ -31,7 +31,7 @@ RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app
     echo "APS_SA_ID=2SN2J9GFLBSS6RN3" >> /app/aps-mcp-server/.env && \
     echo "APS_SA_EMAIL=ssa-ihanbb@fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo.adskserviceaccount.com" >> /app/aps-mcp-server/.env && \
     echo "APS_SA_KEY_ID=4f7741c0-dcf5-443f-a074-eb272068aa4a" >> /app/aps-mcp-server/.env && \
-    echo "APS_SA_PRIVATE_KEY_PATH=/app/private_key.pem" >> /app/aps-mcp-server/.env
+    echo "APS_SA_PRIVATE_KEY_PATH=/app/aps-mcp-server/private_key.pem" >> /app/aps-mcp-server/.env
 
 # 10. Expor a porta que o proxy vai usar
 EXPOSE 8080
