@@ -27,12 +27,12 @@ RUN cd /app/aps-mcp-server && npm run build
 
 # 9. ---- NOVO: CRIAR O ARQUIVO .ENV MANUALMENTE ----
 # Substitua os valores 'SEU_..._AQUI' pelas suas credenciais reais.
-RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app/.env && \
-    echo "APS_CLIENT_SECRET=HdKJ5S9X22rtMrdmsPYOnYQwY6WJiq2a2HsQCbHsmFAfiU1X8w9C6mHGEO0egfS9" >> /app/.env && \
-    echo "APS_SA_ID=2SN2J9GFLBSS6RN3" >> /app/.env && \
-    echo "APS_SA_EMAIL=ssa-ihanbb@fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo.adskserviceaccount.com" >> /app/.env && \
-    echo "APS_SA_KEY_ID=4f7741c0-dcf5-443f-a074-eb272068aa4a" >> /app/.env && \
-    echo "APS_SA_PRIVATE_KEY=/app/private_key.pem" >> /app/.env
+RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app/aps-mcp-server/.env && \
+    echo "APS_CLIENT_SECRET=HdKJ5S9X22rtMrdmsPYOnYQwY6WJiq2a2HsQCbHsmFAfiU1X8w9C6mHGEO0egfS9" >> /app/aps-mcp-server/.env && \
+    echo "APS_SA_ID=2SN2J9GFLBSS6RN3" >> /app/aps-mcp-server/.env && \
+    echo "APS_SA_EMAIL=ssa-ihanbb@fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo.adskserviceaccount.com" >> /app/aps-mcp-server/.env && \
+    echo "APS_SA_KEY_ID=4f7741c0-dcf5-443f-a074-eb272068aa4a" >> /app/aps-mcp-server/.env && \
+    echo "APS_SA_PRIVATE_KEY=/app/private_key.pem" >> /app/aps-mcp-server/.env
 
 # 10. Expor a porta que o proxy vai usar
 EXPOSE 8080
