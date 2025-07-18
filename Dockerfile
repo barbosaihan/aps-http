@@ -38,4 +38,4 @@ RUN echo "APS_CLIENT_ID=fJSqoo0fTrXvMVPCMp8ZkpQXNICdoxqHYAgATZEVpiduaiyo" > /app
 EXPOSE 8080
 
 # 11. Comando final para iniciar a aplicação
-CMD ["mcp-proxy", "node", "/app/aps-mcp-server/build/server.js"]
+CMD ["mcp-proxy", "--host", "0.0.0.0", "--port", "8080", "node", "/app/aps-mcp-server/build/server.js"]
