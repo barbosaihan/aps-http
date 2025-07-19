@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@aps_sdk/construction-account-admin": "^1.2.1",
-    "@aps_sdk/construction-issues": "^1.1.0"
-  }
-}
